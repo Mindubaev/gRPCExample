@@ -1,0 +1,23 @@
+syntax="proto3";
+option java_multiple_files = true;
+package com.example.gRPC.api;
+
+message FindRootRequest{
+  double n=1;
+  double exp=2;
+}
+
+message FindRootResponse{
+  double result=1;
+}
+
+message Number{
+  double num=1;
+}
+
+service CalculatorService{
+  rpc pow(FindRootRequest) returns (FindRootResponse);
+  rpc findDeviation(stream Number) returns (Number);
+  rpc findMultipliers(Number) returns (stream Number);
+  rpc findMax(stream Number) returns (stream Number);
+}
